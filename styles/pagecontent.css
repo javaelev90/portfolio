@@ -8,7 +8,7 @@
 }
 
 .divided > h2 {
-    border: solid 4px rgb(117, 117, 117);
+    border: dotted 4px rgb(117, 117, 117);
     padding: 10px 0 10px 0;
     border-left: 0;
     border-right: 0;
@@ -30,4 +30,32 @@
 
 .pagesectioncontent {
     width: 80%;
+}
+
+#projectwindows {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.projectwindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: dotted 3px rgb(117, 117, 117);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 300px;
+    width: 250px;
+    padding: 5px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.projectwindow > img {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }

@@ -24,6 +24,10 @@ body {
     color: rgb(222, 153, 0);
 }
 
+.text {
+    color: rgb(222, 153, 0); 
+}
+
 #landingpagecanvas {
     width: 100%;
     height: 100%;

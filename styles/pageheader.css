@@ -17,12 +17,14 @@
     top: 0;
     right: 0;
     left: 0;
-    height: 10vh;
+    /* Height of banner */
+    height: 7vh;
 }
 
 #homebanner {
     margin: auto 0 auto 0;
-    padding-left: 50px;
+    /* Text distance from left */
+    padding-left: 70px;
 }
 
 #homebanner > a{
@@ -36,7 +38,8 @@
     flex-direction: row;
     list-style-type: none;
     justify-content: center;
-    padding-right: 50px;
+    /* Text distance from right */
+    padding-right: 70px;
 }
 
 .pagenavigation-item {

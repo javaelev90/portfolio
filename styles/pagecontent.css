@@ -2,23 +2,32 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 70%;
+    width: 100%;
     margin: auto;
     padding: 0;
-
 }
 
-#pagecontent > :first-child {
-    padding-top: 10%;
+.divided > h2 {
+    border: solid 1px #e0e0e0;
+    padding: 10px 0 10px 0;
+    border-left: 0;
+    border-right: 0;
+    width: 100%;
+    text-align: center;
 }
 
-.pagecontentsection {
+.pagesection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-height: 50vh;
+    justify-content: top;
+    min-height: 80vh;
+    padding-top: 10vh;
 }
 
-.pagecontentsection > h2 {
+.pagesection > h2 {
     align-self: center;
+}
+
+.pagesectioncontent {
+    width: 80%;
 }

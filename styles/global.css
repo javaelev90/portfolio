@@ -18,9 +18,19 @@ body {
     width: 100%;
     height: 100%;
 
-    background-color:#521B00;
+    background-color: #000000;
 
     font-family: textFont;
-    color: rgb(235, 235, 235);
+    color: rgb(222, 153, 0);
 }
 
+#landingpagecanvas {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    top:0;
+    position: absolute;
+    z-index: -1;
+}
+  

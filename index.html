@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="src/js/pages.js"></script>
+    <script src="src/js/stars.js"></script>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/pageheader.css">
     <link rel="stylesheet" href="styles/pagecontent.css">
@@ -11,7 +14,9 @@
     <title>Portfolio</title>
 </head>
 <body>
+    <canvas id="landingpagecanvas"></canvas>
     <header id="pageheader">
+        <div id="headerbackground"></div>
         <h1 id="homebanner">
             <a href="index.html">Anders</a>
         </h1>
@@ -32,17 +37,26 @@
     </header>
 
     <main id="pagecontent">
-        <section class="pagecontentsection" id="home">
+        <section class="pagesection" id="home">
             <h2>Hello! Welcome to my portfolio</h2>
         </section>
-        <section class="pagecontentsection" id="projects">
+        <section class="pagesection divided" id="projects">
             <h2>Professional projects</h2>
+            <article class="pagesectioncontent">
+
+            </article>
         </section>
-        <section class="pagecontentsection" id="resume">
+        <section class="pagesection divided" id="resume">
             <h2>Resume</h2>
+            <article class="pagesectioncontent">
+
+            </article>
         </section>
-        <section class="pagecontentsection" id="contact">
+        <section class="pagesection divided" id="contact">
             <h2>Contact</h2>
+            <article class="pagesectioncontent">
+
+            </article>
         </section>
     </main>
     <footer id="pagefooter">

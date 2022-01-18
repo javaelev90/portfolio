@@ -1,7 +1,7 @@
 #pagefooter {
     display: flex;
     flex-direction: row;
-    background-color: rgb(83, 14, 194);
+    background-color: #111111;
 }
 
 #pagefooter > p {

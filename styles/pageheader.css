@@ -44,7 +44,11 @@
     padding: 10px 15px 10px 15px;
 }
 
+.pagenavigation-item > :hover {
+    scale: 1.08;
+}
+
 .pagenavigation-item > a{
     text-decoration: none;
-    color: rgb(235, 235, 235);
+    color: rgb(209, 209, 209);
 }

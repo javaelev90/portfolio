@@ -69,11 +69,11 @@
         moveStars = (distance) => {
             const count = this.stars.length;
             for (let i = 0; i < count; i++) {
-                const s = this.stars[i];
-                s.z -= distance;
+                const star = this.stars[i];
+                star.z -= distance;
                 //Reset star z position
-                while (s.z <= 1) {
-                    s.z += 1000;
+                while (star.z <= 1) {
+                    star.z += 1000;
                 }
             }
         }
@@ -111,6 +111,7 @@
                 }
     
                 const d = star.z / 1000.0;
+                // Calculating brithness depending on how close to goal/screen the star is
                 const brightness = 1 - d * d;
     
                 this.putPixel(x, y, brightness, star.color);

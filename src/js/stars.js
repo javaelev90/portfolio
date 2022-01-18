@@ -124,7 +124,6 @@
     }
 
     window.addEventListener('load', (event) => {
-        console.log('loading stars');
         new StarMaker().initiate();
     });
 

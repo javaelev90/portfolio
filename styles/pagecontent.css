@@ -1,0 +1,24 @@
+#pagecontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    padding: 0;
+
+}
+
+#pagecontent > :first-child {
+    padding-top: 10%;
+}
+
+.pagecontentsection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+.pagecontentsection > h1 {
+    align-self: center;
+}

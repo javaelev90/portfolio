@@ -10,7 +10,7 @@
               this.setCanvasExtent();
             };
         
-            this.stars = this.makeStars(1500);
+            this.stars = this.makeStars(2000);
             window.requestAnimationFrame(this.init);
         }
     
@@ -25,12 +25,15 @@
             const out = [];
             for (let i = 0; i < count; i++) {
                 const biasValue = 0; // axis value 0
-                const influence = 0.95;
-                const mix = Math.random() * influence;
+                const influenceX = 1;
+                const influenceY = 0.7;
+                const mixX = Math.random() * influenceX;
+                const mixY = Math.random() * influenceY;
+
                 const s = {
-                    // Bias for where on the x axis stars should be positioned
-                    x: (Math.random() * 1600 - 800) * (1 - mix) + biasValue * mix,
-                    y: Math.random() * 1000 - 500,
+                    // Bias for where on the x/y axis stars should be positioned
+                    x: (Math.random() * 1600 - 800) * (1 - mixX) + biasValue * mixX,
+                    y: (Math.random() * 1000 - 500) * (1 - mixY) + biasValue * mixY,
                     z: Math.random() * 1000,
                     color: {
                         red: this.getRandomColorValue(1, 255),
@@ -53,7 +56,7 @@
         }
 
         putPixel = (x, y, brightness, color) => {
-            const intensity = brightness * 255;
+            // const intensity = brightness * 255;
             // const red = brightness * color.red;
             // const green = brightness * color.green;
             // const blue = brightness * color.blue;

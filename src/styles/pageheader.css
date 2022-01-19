@@ -49,8 +49,8 @@
     padding: 10px 15px 10px 15px;
 }
 
-.pagenavigation-item > :hover {
-    scale: 1.08;
+.pagenavigation-item:hover {
+    transform: scale(1.08);
 }
 
 .pagenavigation-item > a{

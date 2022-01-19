@@ -1,0 +1,10 @@
+#pagefooter {
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+    background-color: #111111;
+}
+
+#pagefooter > p {
+    margin-left: 5px;
+}

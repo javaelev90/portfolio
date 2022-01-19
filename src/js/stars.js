@@ -11,7 +11,7 @@
             };
         
             this.stars = this.makeStars(1500);
-            requestAnimationFrame(this.init);
+            window.requestAnimationFrame(this.init);
         }
     
         setCanvasExtent = () => {
@@ -78,16 +78,17 @@
             }
         }
     
-        sleep = time => {
+        sleep = (time) => {
             return new Promise((resolve) => setTimeout(resolve, time));
         }
 
-        init = time => {
+        init = (time) => {
             this.prevTime = time;
-            requestAnimationFrame(this.tick);
+            window.requestAnimationFrame(this.tick);
+
         }
     
-        tick = time => {
+        tick = (time) => {
             const elapsed = time - this.prevTime;
             this.prevTime = time;
     
@@ -118,7 +119,7 @@
             }
             //60 FPS i.e 16 ms per frame
             this.sleep(16).then(() => {
-                requestAnimationFrame(this.tick); 
+                window.requestAnimationFrame(this.tick); 
             }); 
         }
     }

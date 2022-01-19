@@ -20,8 +20,10 @@
 .pagesection {
     display: flex;
     flex-direction: column;
+    align-self: center;
     justify-content: top;
     min-height: 80vh;
+    width: 100%;
     padding-top: 10vh;
 }
 
@@ -30,7 +32,10 @@
 }
 
 .pagesectioncontent {
-    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 #projectwindows {
@@ -47,7 +52,7 @@
     border: dotted 3px rgb(117, 117, 117);
     border-radius: 15px;
     overflow: hidden;
-    height: fit-content;
+    height: inherit;
     width: 250px;
     padding: 5px;
     margin: 10px;

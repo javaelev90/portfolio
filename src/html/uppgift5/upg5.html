@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/~anlu5675/sl22/portfolio/"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="src/js/pages.js"></script>
+    <script src="src/js/uppgift5/upg5.js"></script>
+    <link rel="stylesheet" href="src/styles/global.css">
+    <link rel="stylesheet" href="src/styles/pageheader.css">
+    <link rel="stylesheet" href="src/styles/pagecontent.css">
+    <link rel="stylesheet" href="src/styles/pagefooter.css">
+    <link rel="stylesheet" href="src/styles/upg5/game.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <header id="pageheader">
+        <div id="headerbackground"></div>
+        <h1 id="homebanner">
+            <a href="index.html">Anders</a>
+        </h1>
+        <ul id="pagenavigation">
+            <li class="pagenavigation-item">
+                <a href="index.html#home">Home</a>
+            </li>
+            <li class="pagenavigation-item">
+                <a href="index.html#projects">Projects</a> 
+            </li>
+            <li class="pagenavigation-item">
+                <a href="index.html#resume">Resumé</a> 
+            </li>
+            <li class="pagenavigation-item">
+                <a href="index.html#contact">Contact</a> 
+            </li>
+        </ul>
+    </header>
+
+    <main id="pagecontent">
+        <section class="pagesection" id="home">
+            <h2>This is uppgift 5</h2>
+            <article id="mathwindow">
+                <h3>Räkna med mig</h3>
+                <div>
+                    <p>Vilen typ av matte vill du ha?</p>
+                    <input type="radio" class="mathtype" name="mathType" value="+" checked><label for="addition">Addition</label><br>
+                    <input type="radio" class="mathtype" name="mathType" value="-"><label for="subtraction">Subtraktion</label><br>
+                    <input type="radio" class="mathtype" name="mathType" value="*"><label for="multiplication">Multiplikation</label>
+                    <br>
+                    <br>
+                </div>
+                <div id="expressiontype">
+                    <label class="inputlabel" for="expression">Vad blir : </label>
+                    <input type="text" id="expression" name="expression" value="" readonly size="20" />
+                    <button class="btn text" onclick="makeExpression()">Visa nytt uttryck</button>
+                </div>
+                <div id="sendanswer">
+                    <label class="inputlabel" for="answer">Skriv ditt svar : </label>
+                    <input type="text" id="answer" name="answer" size="12" />
+                    <button class="btn text" onclick="sendAnswer()">Skicka ditt svar</button>
+                </div>
+                <p id="response"></p>
+            </article>
+        </section>
+    </main>
+    <footer id="pagefooter">
+        <p>All rights reserved, or whatever</p>
+    </footer>
+</body>
+</html>

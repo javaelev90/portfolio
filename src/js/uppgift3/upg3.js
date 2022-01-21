@@ -349,7 +349,5 @@ class QuizService extends Service{
             run();
 
         }
-        
     });
-
 }) ();

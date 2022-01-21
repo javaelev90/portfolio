@@ -1,9 +1,0 @@
-#pagefooter {
-    display: flex;
-    flex-direction: row;
-    background-color: #111111;
-}
-
-#pagefooter > p {
-    margin-left: 5px;
-}

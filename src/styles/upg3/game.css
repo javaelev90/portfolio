@@ -2,4 +2,7 @@
     align-self: center;
     height: fit-content;
     width: fit-content;
+    border: solid 3px rgb(222, 153, 0);
+    border-radius: 10px;
+    overflow: hidden;
 }

@@ -297,6 +297,7 @@ class QuizService extends Service{
         let nextButtonBox = new ImageBox(canvasWidth-offset*2, 320, offset, offset, Tag.NextQuestion, nextButton);
         let resetButtonBox = new ImageBox(offset, 320, offset, offset, Tag.Reset, resetButton);
         nextButtonBox.enable = false;
+        
 
         nonStaticShapes.push(questionBox);
         nonStaticShapes.push(answerBox1);

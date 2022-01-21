@@ -79,7 +79,7 @@ class MultiLineTextBox extends TextBox {
         context.fillRect(this.x, this.y, this.width, this.height);
         context.font = this.fontsize + "pt Calibri,Arial";
         context.fillStyle = this.textcolor;
-        context.textBaseline = "middle"; 
+        context.textBaseline = "bottom";
         let rowSpacing = 0;
         for (var line = 0; line < this.text.length; line++) {
             context.fillText(this.text[line], this.x + 10, this.y + (this.height / 2) + rowSpacing);
@@ -153,7 +153,7 @@ class QuizService extends Service{
     var quizQuestions;
     var currentQuestionId = 0;
     var isPlaying = false;
-    var corretAnswerCount = 0;
+    var correctAnswerCount = 0;
 
     function setCanvasExtent(canvasParam) {
         canvasParam.height = canvasHeight;
@@ -191,7 +191,7 @@ class QuizService extends Service{
                     if(shape.tag == Tag.Option && isPlaying){
                         let result = await evaluate(shape);
                         if(result) {
-                            corretAnswerCount++;
+                            correctAnswerCount++;
                         }
                         updateNextQuestionBtn(true);
                         isPlaying = false;
@@ -202,9 +202,7 @@ class QuizService extends Service{
                     }
                     // If clicked reset quiz button
                     else if(shape.tag == Tag.Reset){
-                        currentQuestionId = 0;
-                        isPlaying = true;
-                        updateTextBoxes(currentQuestionId);
+                        reset();
                     }
                 }
             }
@@ -214,14 +212,18 @@ class QuizService extends Service{
     function nextQuestion(){
         isPlaying = true;
         currentQuestionId++;
-        currentQuestionId %= quizQuestions.length;
-        updateTextBoxes(currentQuestionId);
+        if(currentQuestionId < quizQuestions.length){
+            updateTextBoxes(currentQuestionId);
+        } else {
+            createScoreBoard();
+        }
     }
 
     function reset(){
-        createQuizBoard();
-        currentQuestionId = 0;
         isPlaying = true;
+        currentQuestionId = 0;
+        correctAnswerCount = 0;
+        createQuizBoard();    
     }
 
     function updateTextBoxes(questionId){
@@ -276,7 +278,27 @@ class QuizService extends Service{
         }
     }
 
-    async function createQuizBoard() {
+    function createScoreBoard() {
+
+        nonStaticShapes = new Array();
+
+        var resetButton = new Image(60, 60);
+        resetButton.src = "resources/images/reset.png";
+
+        let scoreText = "You have finished the Quiz!";
+        let answers = [("Number of correct answers: " + correctAnswerCount), ("Number of wrong answers: " + (quizQuestions.length - correctAnswerCount)) ];
+        
+        let offset = 50;
+        let headingText = new TextBox(offset, 40, canvasWidth-offset*2, 80, Tag.Question, "#8B6CFA", scoreText, "#F6EFF8", "16");
+        let answersBox = new MultiLineTextBox(offset, 160, canvasWidth-offset*2, 80, Tag.Question, "#8B6CFA", answers, "#F6EFF8", "14");
+        let resetButtonBox = new ImageBox(offset, 320, offset, offset, Tag.Reset, resetButton);
+
+        nonStaticShapes.push(headingText);
+        nonStaticShapes.push(answersBox);
+        nonStaticShapes.push(resetButtonBox);
+    }
+
+    function createQuizBoard() {
 
         nonStaticShapes = new Array();
 
@@ -284,10 +306,6 @@ class QuizService extends Service{
         nextButton.src = "resources/images/next.png";
         var resetButton = new Image(60, 60);
         resetButton.src = "resources/images/reset.png";
-
-        await quizService.getQuizQuestions().then(res => {
-            quizQuestions = res["questions"];
-        });
 
         let offset = 50;
         let questionBox = new MultiLineTextBox(offset, 40, canvasWidth-offset*2, 80, Tag.Question, "#8B6CFA", quizQuestions[currentQuestionId]["question"], "#F6EFF8", "13");
@@ -297,7 +315,6 @@ class QuizService extends Service{
         let nextButtonBox = new ImageBox(canvasWidth-offset*2, 320, offset, offset, Tag.NextQuestion, nextButton);
         let resetButtonBox = new ImageBox(offset, 320, offset, offset, Tag.Reset, resetButton);
         nextButtonBox.enable = false;
-        
 
         nonStaticShapes.push(questionBox);
         nonStaticShapes.push(answerBox1);
@@ -321,9 +338,13 @@ class QuizService extends Service{
         background.onload = async() => {
             
             staticShapes.push(new ImageBox(0, 0, canvasWidth, 380, Tag.Background, background));
+            await quizService.getQuizQuestions().then(res => {
+                quizQuestions = res["questions"];
+            });    
             createQuizBoard();
             isPlaying = true;
             run();
+
         }
         
     });

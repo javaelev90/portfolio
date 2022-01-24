@@ -114,8 +114,8 @@ class QuizService extends Service{
 
     constructor(serviceUrl){
         super();
-        this.getQuizUrl         = "https://people.dsv.su.se/~anlu5675/services/getquizquestion-service.php";
-        this.checkQuizAnswerUrl = "https://people.dsv.su.se/~anlu5675/services/checkquizsolution-service.php";
+        this.getQuizUrl         = "https://people.dsv.su.se/~anlu5675/sl22/portfolio/src/php/getquizquestion-service.php";
+        this.checkQuizAnswerUrl = "https://people.dsv.su.se/~anlu5675/sl22/portfolio/src/php/checkquizsolution-service.php";
     }
 
     getQuizQuestions() {

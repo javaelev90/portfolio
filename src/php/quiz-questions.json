@@ -1,0 +1,37 @@
+[
+    {
+        "question" : ["Vad heter Norges huvudstad?"],
+        "answers" : [
+            "Oslo", "Stockholm", "Köpenhamn"
+        ],
+        "solution" : "Oslo"
+    },
+    {
+        "question" : ["Vad heter den femte planeten från solen?"],
+        "answers" : [
+            "Uranus", "Saturnus", "Mars"
+        ],
+        "solution" : "Saturnus"
+    },
+    {
+        "question" : ["Vilken färg får du om du blandar färgerna", "röd och blå av lika mängd?"],
+        "answers" : [
+            "Cyan", "Lila", "Grön"
+        ],
+        "solution" : "Lila"
+    },
+    {
+        "question" : ["Vilken av dessa har normalt inte fyra ben?"],
+        "answers" : [
+            "Stol", "Elefant", "Myra"
+        ],
+        "solution" : "Myra"
+    },
+    {
+        "question" : ["Vilket år släpptes filmen Contact?"],
+        "answers" : [
+            "1997", "2001", "1993"
+        ],
+        "solution" : "1997"
+    }
+]

@@ -31,6 +31,7 @@
     text-decoration: none;
     font-weight: lighter;
     color: #B3001F;
+    text-shadow: 2px 1px maroon;
 }
 
 #pagenavigation {
@@ -47,6 +48,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 10px 15px 10px 15px;
+    font-size: 13pt;
 }
 
 .pagenavigation-item:hover {

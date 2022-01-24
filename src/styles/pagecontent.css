@@ -29,6 +29,7 @@
 
 .pagesection > h2 {
     align-self: center;
+    text-shadow: 2px 2px maroon;
 }
 
 .pagesectioncontent {
@@ -81,4 +82,25 @@
 .btn:hover {
     background-color: rgb(41, 41, 41);
     transform: scale(1.05);
+}
+
+#home {
+    padding-top: 35%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#introtext {
+    font-size: 18pt;
+    text-align: center;
+    text-shadow: 2px 2px maroon;
+}
+
+#introtext > h2 {
+    margin: 5px;
+}
+
+#introtext > h3 {
+    margin-top: 5px;
+    margin-block-start: 5px;
 }

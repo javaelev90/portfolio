@@ -9,9 +9,9 @@
     {
         "question" : ["Vad heter den femte planeten från solen?"],
         "answers" : [
-            "Uranus", "Saturnus", "Mars"
+            "Saturnus", "Jupiter", "Mars"
         ],
-        "solution" : "Saturnus"
+        "solution" : "Jupiter"
     },
     {
         "question" : ["Vilken färg får du om du blandar färgerna", "röd och blå av lika mängd?"],

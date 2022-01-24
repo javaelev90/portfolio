@@ -43,12 +43,16 @@
             <article id="mathwindow">
                 <h3>Räkna med mig</h3>
                 <div>
-                    <p>Vilen typ av matte vill du ha?</p>
+                    <p>Vilken typ av matte vill du ha?</p>
                     <input type="radio" class="mathtype" name="mathType" value="+" checked><label for="addition">Addition</label><br>
                     <input type="radio" class="mathtype" name="mathType" value="-"><label for="subtraction">Subtraktion</label><br>
                     <input type="radio" class="mathtype" name="mathType" value="*"><label for="multiplication">Multiplikation</label>
                     <br>
                     <br>
+                </div>
+                <div id="scorecounter"> 
+                    <p id="score">Poäng: 0</p>
+                    <button class="btn text" id="resetbtn" onclick="resetScore()">Nollställ poäng</button>
                 </div>
                 <div id="expressiontype">
                     <label class="inputlabel" for="expression">Vad blir : </label>

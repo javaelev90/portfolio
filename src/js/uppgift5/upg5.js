@@ -1,4 +1,5 @@
 var currentExpression = "";
+var scoreCounter = 0;
 
 function makeExpression() {
     let mathType = $('.mathtype:checked').val();
@@ -22,10 +23,13 @@ function sendAnswer() {
 
 function sendReponse(wasCorrect) {
     if(wasCorrect) {
-        document.getElementById("response").innerHTML = "That answer is correct";
+        document.getElementById("response").innerHTML = "Du har räknat rätt!";
         document.getElementById("response").style = "color: black; background-color: green;";
+        scoreCounter++;
+        document.getElementById("score").innerHTML = "Poäng: " + scoreCounter;
+
     } else {
-        document.getElementById("response").innerHTML = "That answer is wrong";
+        document.getElementById("response").innerHTML = "Du har räknat fel!";
         document.getElementById("response").style = "color: black; background-color: red;";
     }
    
@@ -34,4 +38,9 @@ function sendReponse(wasCorrect) {
 function resetResponse() {
     document.getElementById("response").innerHTML = "";
     document.getElementById("response").style = " background-color: transparent;";
+}
+
+function resetScore() {
+    scoreCounter = 0;
+    document.getElementById("score").innerHTML = "Poäng: " + scoreCounter;
 }

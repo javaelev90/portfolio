@@ -32,3 +32,15 @@
     margin-block: 3px;
 }
 
+#scorecounter {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    justify-content: space-between;
+}
+
+#resetbtn {
+    align-self: center;
+    height: fit-content;
+    margin-block: 2px;
+}

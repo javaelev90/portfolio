@@ -66,6 +66,26 @@
                 </div>
                 <p id="response"></p>
             </article>
+            <article>
+                <p>
+                    <h3>Lösning:</h3>
+                    För att lösa den här uppgiften skapades en html-struktur som liknar den bild som gavs i uppgiftsbeskrivningen. Detta genom att experimentera med ny css och återanvändning av css som används i portfolion. 
+                    <br>
+                    Därefter skapades några funktioner i javascript för att få knapparna att göra något:<br>
+                    <ul>
+                    <li>makeExpression</li>
+                    <li>sendAnswer</li>
+                    <li>sendReponse</li>
+                    <li>resetResponse</li>
+                    <li>resetScore</li>
+                    </ul>
+                    <br>
+                    Funktionen makeExpression används när man klickar på “Visa nytt uttryck” och genererar då två siffror slumpmässigt med ett addition, subtraktion eller multiplikationstecken emellan som bildar det matematiska uttrycket. Vilket tecken som väljs beror på valt alternativ under “Vilken typ av matte vill du ha?”. 
+                    <br><br>SendAnswer är kopplat till knappen “Skicka ditt svar” och avgör om svaret stämmer överens med resultatet av det matematiska uttrycket, vid rätt svar ökar poängräknaren.
+                    SendResponse ger visuell feedback beroende på resultat från sendAnswer, om man skrivit fel svar får responsen “Du har räknat fel!” detta går att se i figur 1.
+                    <br><br>Funktionen resetResponse gömmer bara feedback-rutan som sendResponse har visat upp, agerar reset för när användaren vill se ett nytt uttryck. Funktionen resetScore är kopplad till knappen “Nollställ poäng” och nollställer ens poäng.
+                </p>         
+            </article>
         </section>
     </main>
     <footer id="pagefooter">

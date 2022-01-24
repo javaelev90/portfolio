@@ -41,6 +41,57 @@
         <section class="pagesection" id="home">
             <h2>This is uppgift 3</h2>
             <canvas id="gamecanvas"></canvas>
+            <article>
+                <p>
+                    <h3>Lösning:</h3>
+                    För att göra lösningen lite roligare att bygga frångicks den tutorial något. Tutorialen var väldigt specifik för uppgiften och jag ansåg att det skulle vara roligt att göra vissa delar mer generella.
+                    <br><br>
+                    Då exempellösningen byggde upp spelet med ett antal boxar tyckte jag det passade att skapa en klasshierarki för dem.
+                    För lösningen skapades därav ett antal box-klasser(se hur boxarna har använts i figur 1):
+                    <ul>
+                    <li>Box - <i>bas klass</i></li>
+                    <li>ImageBox - <i>utökar Box med en bild-tag</i></li>
+                    <li>ColorBox - <i>utökar Box med färg</i></li>
+                    <li>TextBox -  <i>utökar ColorBox med text</i></li>
+                    <li>MultiLineTextBox - <i>utökar TextBox och ändrar draw-funktionen för att underlätta rendering av längre frågor</i></li>
+                    </ul>
+                    Box-klassen har tre funktioner: <i>draw</i>, <i>setEnable</i> och <i>positionInBounds</i>. Draw-metoden använder canvas-elementet och ritar ut fyrkanen, hur detta görs förändras lite i de olika sub-klasserna. De andra två funktionerna förklarar sig själva, <i>setEnable</i> används i implementationen för att inaktivera vissa objekt och <i>positionInBounds</i> används för att kontrollera om man klickat i boxen med musen.
+
+                    <br><br>För implementationen är funktionerna <i>draw</i> och <i>clickhandler</i> mest intressanta då dessa hanterar större delen av spelet. <i>Draw</i> ritar ut alla boxar och <i>clickhandler</i> hanterar användarhändelser, dvs. knapptryckningar på boxarna, reset-knappen samt nästa-fråga-knappen.
+
+                    <br><br>I tutorialen användes php också, därav skapade jag en liten quiz-service. Den omfattar två service script och en gemensamt script för fil-läsning. 
+                    <br><br>Service script:
+                    <ul>
+                    <li><i>checkquizsolution-service.php</i></li>
+                    <li><i>getquizquestion-service.php</i></li>
+                    </ul>
+                    <br>Namnen förklarar scriptens funktion ganska väl. Getquizquestion-service låter användaren hämta quiz-frågorna i en json-struktur men utelämnar lösningen på frågorna. Checkquizsolution-service tar emot frågans id och användarens svar för att kontrollera mot lösningen. Tanken med dessa script var att klienten inte skulle få lösningen på frågan utan bara kan kontrollera ett av de möjliga svaren mot servicen.
+
+
+                    <br><br>Format på JSON-strukturen:
+<pre>
+[
+    {
+        "question" : ["Vad heter Norges huvudstad?"],
+        "answers" : [
+            "Oslo", "Stockholm", "Köpenhamn"
+        ],
+        "solution" : "Oslo"
+    },
+    {
+        "question" : ["Vad heter den femte planeten från solen?"],
+        "answers" : [
+            "Saturnus", "Jupiter", "Mars"
+        ],
+        "solution" : "Jupiter"
+    }
+]
+</pre>
+                    <br>Tanken är att det enkelt ska gå att lägga till frågor. Har skapat fem frågor efter ovan struktur till spelet.
+
+                    På klientsidan används klassen QuizService för att hämta frågorna och för att utvärdera användarens svar. För att skapa GET-request används Fetch-API:et som fungerar i de flesta webbläsare.
+                </p>         
+            </article>
         </section>
     </main>
     <footer id="pagefooter">

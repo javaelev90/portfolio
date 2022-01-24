@@ -1,5 +1,6 @@
 var currentExpression = "";
 var scoreCounter = 0;
+var newExpression = true;
 
 function makeExpression() {
     let mathType = $('.mathtype:checked').val();
@@ -9,6 +10,7 @@ function makeExpression() {
     currentExpression = (number1 + " " + mathType + " " + number2);
     document.getElementById("expression").value = currentExpression;
     document.getElementById("answer").value = "";
+    newExpression = true;
     resetResponse();
 }
 
@@ -25,9 +27,11 @@ function sendReponse(wasCorrect) {
     if(wasCorrect) {
         document.getElementById("response").innerHTML = "Du har räknat rätt!";
         document.getElementById("response").style = "color: black; background-color: green;";
-        scoreCounter++;
-        document.getElementById("score").innerHTML = "Poäng: " + scoreCounter;
-
+        if(newExpression) {
+            scoreCounter++;
+            document.getElementById("score").innerHTML = "Poäng: " + scoreCounter;    
+            newExpression = false;
+        }
     } else {
         document.getElementById("response").innerHTML = "Du har räknat fel!";
         document.getElementById("response").style = "color: black; background-color: red;";

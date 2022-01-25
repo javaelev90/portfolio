@@ -65,7 +65,7 @@
                     <li><i>checkquizsolution-service.php</i></li>
                     <li><i>getquizquestion-service.php</i></li>
                     </ul>
-                    <br>Namnen förklarar scriptens funktion ganska väl. Getquizquestion-service låter användaren hämta quiz-frågorna i en json-struktur men utelämnar lösningen på frågorna. Checkquizsolution-service tar emot frågans id och användarens svar för att kontrollera mot lösningen. Tanken med dessa script var att klienten inte skulle få lösningen på frågan utan bara kan kontrollera ett av de möjliga svaren mot servicen.
+                    <br>Namnen förklarar scriptens funktion ganska väl. <i>Getquizquestion-service</i> låter användaren hämta quiz-frågorna i en json-struktur men utelämnar lösningen på frågorna. <i>Checkquizsolution-service</i> tar emot frågans id och användarens svar för att kontrollera mot lösningen. Tanken med dessa script var att klienten inte skulle få lösningen på frågan utan bara kan kontrollera ett av de möjliga svaren mot servicen.
 
 
                     <br><br>Format på JSON-strukturen:
@@ -87,9 +87,9 @@
     }
 ]
 </pre>
-                    <br>Tanken är att det enkelt ska gå att lägga till frågor. Har skapat fem frågor efter ovan struktur till spelet.
+                    Tanken är att det enkelt ska gå att lägga till frågor. Har skapat fem frågor efter ovan struktur till spelet.
 
-                    På klientsidan används klassen QuizService för att hämta frågorna och för att utvärdera användarens svar. För att skapa GET-request används Fetch-API:et som fungerar i de flesta webbläsare.
+                    På klientsidan används klassen <i>QuizService</i> för att hämta frågorna och för att utvärdera användarens svar. För att skapa GET-request används Fetch-API:et som fungerar i de flesta webbläsare.
                 </p>         
             </article>
         </section>

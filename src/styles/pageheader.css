@@ -19,6 +19,7 @@
     left: 0;
     /* Height of banner */
     height: 7vh;
+    z-index: 99;
 }
 
 #homebanner {

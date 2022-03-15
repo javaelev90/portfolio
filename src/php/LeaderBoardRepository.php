@@ -1,5 +1,5 @@
 <?php
-
+    // Skapare: Anders Lumio
     class LeaderBoardRepository {
 
         private $hostName = "atlas.dsv.su.se:3306";
@@ -42,49 +42,6 @@
             );
         }
 
-        public function select($sql, $values, $valueTypes) {
-            // Make a prepared statment to prevent sql injection
-            $preparedStatement = $this->db->prepare($sql);
-            
-            // Bind params to the prepared statement
-            $preparedStatement->bind_param($valueTypes, ...$values);  
-            $preparedStatement->execute();
-
-            $result = $preparedStatement->get_result(); 
-            // Fetch all data
-            $data = $result->fetch_all(MYSQLI_ASSOC);
-            // Close the statement if the previous operations went well
-            $preparedStatement->close();
-            
-            return array(
-                "resultcode" => $this->db->error == "" ? 0 : -1,
-                "errormsg" => $this->db->error,
-                "data" => $data
-            );
-        }
-
-        // Executes update/delete sql
-        public function update($sql, $values, $valueTypes){
-            $preparedStatement = $this->db->prepare($sql);
-            $preparedStatement->bind_param($valueTypes, ...$values);
-            $preparedStatement->execute();
-            $preparedStatement->close();
-            return array(
-                "resultcode" => $this->db->error == "" ? 0 : -1,
-                "errormsg" => $this->db->error
-            );
-        }
-
-        // Simple select query executer
-        public function executeSql($sql){
-            $result = $this->db->query($sql);
-            return array(
-                "resultcode" => $this->db->error == "" ? 0 : -1,
-                "errormsg" => $this->db->error,
-                "data" => $result
-            );
-        }
-
         public function getLeaderboardInterval($min, $max){
             $this->openConnection();
             $sql = "SELECT * 
@@ -95,9 +52,15 @@
             return $result;
         }
 
-        public function insertLeaderboardEntry($deviceid, $username, $score, $time){
+        public function upsertLeaderboardEntry($deviceid, $username, $score, $time){
 
             $this->openConnection();
+            // SQL that inserts if the device never registered score before 
+            // or updates the score if a higher score is given for that device.
+
+            // A new score is registered if the score is higher, if the score
+            // is the same as before the time needs to be lower than the previously
+            // registered time.
             $sql = "INSERT INTO LEADERBOARD (DEVICEID, USERNAME,SCORE,TIME) 
                 VALUES (?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE USERNAME = ?, SCORE = (
@@ -130,7 +93,50 @@
             return $result;
         }
 
-        public function insert($sql, $values, $valueTypes){
+        private function select($sql, $values, $valueTypes) {
+            // Make a prepared statment to prevent sql injection
+            $preparedStatement = $this->db->prepare($sql);
+            
+            // Bind params to the prepared statement
+            $preparedStatement->bind_param($valueTypes, ...$values);  
+            $preparedStatement->execute();
+
+            $result = $preparedStatement->get_result(); 
+            // Fetch all data
+            $data = $result->fetch_all(MYSQLI_ASSOC);
+            // Close the statement if the previous operations went well
+            $preparedStatement->close();
+            
+            return array(
+                "resultcode" => $this->db->error == "" ? 0 : -1,
+                "errormsg" => $this->db->error,
+                "data" => $data
+            );
+        }
+
+        // Executes update/delete sql
+        private function update($sql, $values, $valueTypes){
+            $preparedStatement = $this->db->prepare($sql);
+            $preparedStatement->bind_param($valueTypes, ...$values);
+            $preparedStatement->execute();
+            $preparedStatement->close();
+            return array(
+                "resultcode" => $this->db->error == "" ? 0 : -1,
+                "errormsg" => $this->db->error
+            );
+        }
+
+        // Simple select query executer
+        public function executeSql($sql){
+            $result = $this->db->query($sql);
+            return array(
+                "resultcode" => $this->db->error == "" ? 0 : -1,
+                "errormsg" => $this->db->error,
+                "data" => $result
+            );
+        }
+
+        private function insert($sql, $values, $valueTypes){
             $preparedStatement = $this->db->prepare($sql);
             $preparedStatement->bind_param($valueTypes, ...$values);
             $preparedStatement->execute();
@@ -142,6 +148,7 @@
                 "lastid" => $lastId
             );
         }
+
     }
 
 ?>

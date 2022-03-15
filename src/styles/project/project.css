@@ -1,16 +1,17 @@
+/* Skapare: Anders Lumio */
 #projectwindow {
     background-color: rgb(27, 27, 27);
     border: solid 2px rgb(222, 153, 0);
     border-radius: 10px;
     padding: 5px;
-    max-width: 1280px;
+    max-width: 1300px;
     height: auto;
     align-self: center;
 }
 
 .game-frame {
-    width: 1280px;
-    height: 720px;
+    width: 1300px;
+    height: 740px;
     display: block;
     position: relative;
     margin-top: 3%;
@@ -23,6 +24,7 @@
     height: 100vh; */
     display: block;
     z-index: 99;
+    overflow: hidden;
 }
 
 .iframe-overlay {

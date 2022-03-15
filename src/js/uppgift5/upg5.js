@@ -1,3 +1,4 @@
+// Skapare: Anders Lumio
 var currentExpression = "";
 var scoreCounter = 0;
 var newExpression = true;

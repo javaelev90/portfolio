@@ -1,3 +1,4 @@
+// Skapare: Anders Lumio
 // Removes game iframe overlay and sets the iframe src
 function runGame() {
     var iframe = document.getElementById("game-window");

@@ -1,5 +1,5 @@
 <?php
-
+    // Skapare: Anders Lumio
     require "LeaderBoardRepository.php"; 
 
     ini_set('display_errors', 1);

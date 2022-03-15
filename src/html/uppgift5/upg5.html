@@ -1,5 +1,6 @@
+<!-- Skapare: Anders Lumio -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -29,7 +30,7 @@
                 <a href="index.html#projects">Projects</a> 
             </li>
             <li class="pagenavigation-item">
-                <a href="index.html#resume">Resumé</a> 
+                <a href="index.html#resume">About</a> 
             </li>
             <li class="pagenavigation-item">
                 <a href="index.html#contact">Contact</a> 
@@ -44,9 +45,9 @@
                 <h3>Räkna med mig</h3>
                 <div>
                     <p>Vilken typ av matte vill du ha?</p>
-                    <input type="radio" class="mathtype" name="mathType" value="+" checked><label for="addition">Addition</label><br>
-                    <input type="radio" class="mathtype" name="mathType" value="-"><label for="subtraction">Subtraktion</label><br>
-                    <input type="radio" class="mathtype" name="mathType" value="*"><label for="multiplication">Multiplikation</label>
+                    <input id="addition-radio" type="radio" class="mathtype" name="mathType" value="+" checked><label for="addition-radio">Addition</label><br>
+                    <input id="subtraction-radio" type="radio" class="mathtype" name="mathType" value="-"><label for="subtraction-radio">Subtraktion</label><br>
+                    <input id="multiplication-radio" type="radio" class="mathtype" name="mathType" value="*"><label for="multiplication-radio">Multiplikation</label>
                     <br>
                     <br>
                 </div>
@@ -67,24 +68,23 @@
                 <p id="response"></p>
             </article>
             <article>
-                <p>
-                    <h3>Lösning:</h3>
-                    För att lösa den här uppgiften skapades en html-struktur som liknar den bild som gavs i uppgiftsbeskrivningen. Detta genom att experimentera med ny css och återanvändning av css som används i portfolion. 
-                    <br>
-                    Därefter skapades några funktioner i javascript för att få knapparna att göra något:<br>
-                    <ul>
-                    <li><i>makeExpression</i></li>
-                    <li><i>sendAnswer</i></li>
-                    <li><i>sendReponse</i></li>
-                    <li><i>resetResponse</i></li>
-                    <li><i>resetScore</i></li>
-                    </ul>
-                    Funktionen <i>makeExpression</i> används när man klickar på “Visa nytt uttryck” och genererar då två siffror slumpmässigt med ett addition, subtraktion eller multiplikationstecken emellan som bildar det matematiska uttrycket. Vilket tecken som väljs beror på valt alternativ under “Vilken typ av matte vill du ha?”. 
-                    <br><br><i>SendAnswer</i> är kopplat till knappen “Skicka ditt svar” och avgör om svaret stämmer överens med resultatet av det matematiska uttrycket, vid rätt svar ökar poängräknaren.
-                    <i>SendResponse</i> ger visuell feedback beroende på resultat från <i>sendAnswer</i>, om man skrivit fel svar får responsen “Du har räknat fel!” detta går att se i figur 1.
-                    <br><br>Funktionen <i>resetResponse</i> gömmer bara feedback-rutan som <i>sendResponse</i> har visat upp, agerar reset för när användaren vill se ett nytt uttryck. 
-                    <br>Funktionen <i>resetScore</i> är kopplad till knappen “Nollställ poäng” och nollställer ens poäng.
-                </p>         
+                <h3>Lösning:</h3>
+                För att lösa den här uppgiften skapades en html-struktur som liknar den bild som gavs i uppgiftsbeskrivningen. Detta genom att experimentera med ny css och återanvändning av css som används i portfolion. 
+                <br>
+                Därefter skapades några funktioner i javascript för att få knapparna att göra något:<br>
+                <ul>
+                <li><i>makeExpression</i></li>
+                <li><i>sendAnswer</i></li>
+                <li><i>sendReponse</i></li>
+                <li><i>resetResponse</i></li>
+                <li><i>resetScore</i></li>
+                </ul>
+                Funktionen <i>makeExpression</i> används när man klickar på “Visa nytt uttryck” och genererar då två siffror slumpmässigt med ett addition, subtraktion eller multiplikationstecken emellan som bildar det matematiska uttrycket. Vilket tecken som väljs beror på valt alternativ under “Vilken typ av matte vill du ha?”. 
+                <br><br><i>SendAnswer</i> är kopplat till knappen “Skicka ditt svar” och avgör om svaret stämmer överens med resultatet av det matematiska uttrycket, vid rätt svar ökar poängräknaren.
+                <i>SendResponse</i> ger visuell feedback beroende på resultat från <i>sendAnswer</i>, om man skrivit fel svar får responsen “Du har räknat fel!” detta går att se i figur 1.
+                <br><br>Funktionen <i>resetResponse</i> gömmer bara feedback-rutan som <i>sendResponse</i> har visat upp, agerar reset för när användaren vill se ett nytt uttryck. 
+                <br>Funktionen <i>resetScore</i> är kopplad till knappen “Nollställ poäng” och nollställer ens poäng.       
+                <br><br>
             </article>
         </section>
     </main>

@@ -1,4 +1,5 @@
 <?php
+    // Skapare: Anders Lumio
     require_once "classes/QuizRepository.php"; 
 
     header('Content-Type: application/json');

@@ -1,5 +1,6 @@
+<!-- Skapare: Anders Lumio -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -29,7 +30,7 @@
                 <a href="index.html#projects">Projects</a> 
             </li>
             <li class="pagenavigation-item">
-                <a href="index.html#resume">Resumé</a> 
+                <a href="index.html#resume">About</a> 
             </li>
             <li class="pagenavigation-item">
                 <a href="index.html#contact">Contact</a> 
@@ -45,8 +46,7 @@
                     <div class="iframe-overlay" id="iframe-overlay">
                         <button class="playbtn game-btn" onclick="runGame()">Run game</button>
                     </div>
-                    <iframe class="iframe" id="game-window" mozallowfullscreen="true" allowfullscreen="true" webkitallowfullscreen="true" allowtransparency="true"
-                        msallowfullscreen="true" scrolling="no" frameborder="0" 
+                    <iframe class="iframe" id="game-window" allowfullscreen
                         allow="autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr"
                         src="about:blank" 
                         data-src="https://people.dsv.su.se/~anlu5675/sl22/portfolio/src/js/project/game/">
@@ -55,24 +55,106 @@
                 </div>
             </article>
             <article>
-                <p>
-                    <h3>Lösning:</h3>
-                    För att lösa den här uppgiften skapades en html-struktur som liknar den bild som gavs i uppgiftsbeskrivningen. Detta genom att experimentera med ny css och återanvändning av css som används i portfolion. 
-                    <br>
-                    Därefter skapades några funktioner i javascript för att få knapparna att göra något:<br>
-                    <ul>
-                    <li><i>makeExpression</i></li>
-                    <li><i>sendAnswer</i></li>
-                    <li><i>sendReponse</i></li>
-                    <li><i>resetResponse</i></li>
-                    <li><i>resetScore</i></li>
-                    </ul>
-                    Funktionen <i>makeExpression</i> används när man klickar på “Visa nytt uttryck” och genererar då två siffror slumpmässigt med ett addition, subtraktion eller multiplikationstecken emellan som bildar det matematiska uttrycket. Vilket tecken som väljs beror på valt alternativ under “Vilken typ av matte vill du ha?”. 
-                    <br><br><i>SendAnswer</i> är kopplat till knappen “Skicka ditt svar” och avgör om svaret stämmer överens med resultatet av det matematiska uttrycket, vid rätt svar ökar poängräknaren.
-                    <i>SendResponse</i> ger visuell feedback beroende på resultat från <i>sendAnswer</i>, om man skrivit fel svar får responsen “Du har räknat fel!” detta går att se i figur 1.
-                    <br><br>Funktionen <i>resetResponse</i> gömmer bara feedback-rutan som <i>sendResponse</i> har visat upp, agerar reset för när användaren vill se ett nytt uttryck. 
-                    <br>Funktionen <i>resetScore</i> är kopplad till knappen “Nollställ poäng” och nollställer ens poäng.
-                </p>         
+                <h2>Spelbeskrivning</h2>
+                I det här spelet ska spelaren få lära sig var i USA en viss uppfinning uppfanns. För att lära sig detta ska spelaren matcha en uppfinning med en stat i USA. Spelet har två lägen, “Learning Mode” och “Competition Mode”, det första underlättar lärandet och det andra låter spelaren tävla med sitt resultat mot andra spelare. Hur väl en spelare lyckas utvärderas genom ett poängsystem kombinerat med tiden det tog att matcha alla uppfinningar. I “Competition Mode” registreras spelares bästa resultat till en leaderboard.
+                <br><br>
+                <h2>Lösningen</h2>
+                Spelet utvecklades i Unity och kan övergripande delas in i tre delar, den underliggande logiken, de grafiska elementen samt leaderboard API:et. Nedan kommer dessa beskrivas.
+                <h3>Logiken</h3>
+                Lösningen har tre klasser som hanterar majoriteten av logiken som finns spelet. Dessa kallas <i>GameManager</i>, <i>State</i> och <i>LeaderBoardManager</i>, där den första är mest komplicerad. 
+                <br><br>
+                
+                Funktioner som <i>GameManager</i> hanterar:<br>
+                <ul>
+                    <li>Blanda ordningen på matchningarna</li>
+                    <li>Uppdatera GUI:t med ny matchning</li>
+                    <li>Kontrollera om rätt stat har klickats</li>
+                    <li>Starta om spelet</li>
+                    <li>Hålla reda på poäng och tid</li>
+                    <li>Managera två spellägen, “Learning Mode” och “Competition Mode”</li>
+                </ul>
+                Spelaren har två försök att matcha en stat med en uppfinning för att få poäng annars kommer ger frågan inga poäng. Poängen ges i procentform och max poäng ges om man på första försöket matchat alla uppfinningar med rätt stat.
+                Flera spellägen är skapade för att göra det till en bättre lärverktyg men samtidigt göra spelupplevelsen roligare. “Learning Mode” gör det lättare för spelaren att lära sig genom att endast göra max fem stater klickbara för varje uppfinning. “Competition Mode” tar bort stödhjulen och låter spelaren klicka på alla stater för varje fråga, resultatet från en spelad runda läggs på en global leaderboard.
+                <br><br>
+                Funktioner som <i>State</i> hanterar:
+                <ul>
+                    <li>Ge visuell och ljudlig feedback vid knapptryck</li>
+                    <li>Uppdatera text om vilken stat som musen hålls över</li>
+                </ul>
+                Feedback som ges beror på om spelaren har matchat eller inte matchat en uppfinning med en stat. Om spelaren har lyckats på första klicket blir staten grön, om hen lyckas på andra försöket blir staten gul, om tre klick krävs kommer staten bli röd. 
+                För att göra det tydligt att man klickat fel vid första och andra klicket kommer ett negativt ljud höras samt att staten blir röd i en sekund. Vid tredje försöket kommer staten blinka rött till dess att spelaren har klickat på staten.
+                För att visa att man har klickat på rätt stat hörs alltid ett positivt ljud oavsett hur många fel man haft innan.
+                <br><br>
+                Funktioner som <i>LeaderBoardManager</i> hanterar:
+                <ul>
+                    <li>Hålla reda på ett autogenererat namn på spelaren</li>
+                    <li>Hålla reda på unikt ID för enheten spelet spelas på</li>
+                    <li>Hämta leaderboarden</li>
+                    <li>Uppdatera spelarens resultat på leaderboarden</li>
+                </ul>
+                Då varje enheten får ett ID kommer alla spelare som delar enhet visas som ett resultat på leaderboaden, där endast det högsta resultatet sparas.
+                <br><br>
+                <h3>Grafiken</h3>
+                <img src="resources/images/game.png" alt="Invention Cartographer" width="800">
+                <br>Figur 1: Visar grafik för spelet
+                <br><br>
+                Grafiken delas in i GUI-relaterad grafiken och spelgrafik. GUI-grafiken är helt och hållet skapad genom att använda UI-element som finns i Unity. Grafik som tillhör spelelement, dvs bilder på stater, bilder för uppfinnings- text och ikon har hämtats en informationssida där kopplingen mellan stat och uppfinning beskrevs. Utöver detta har en shader importerats till projektet som gör bakgrunden suddig, man kan se den här effekten i figur 1 där endast menyn ser fokuserad ut.
+                <h3>Leaderboard API</h3>
+                Då en lokal leaderboard i oftast blir rätt onödig då det i flesta fall endast är en spelare kändes det bättre att skapa ett simpelt API som kunde hålla resultat för alla spelare. API:et kodades i PHP och resultatet sparas i en MySQL-databas. Anledningen att resultatet sparas i en databas, istället för exempelvis en fil, är för att det är väldigt enkelt att uppdatera samt att rangordna spelares resultat.
+                <br><br>
+                Det finns tre script som utgör API:et, <i>getleaderboard.php</i>, <i>updateleaderboard.php</i> och <i>LeaderBoardRepository.php</i>. Det sista scriptet är hanterar all kommunikation med databasen och används av de andra två scripten, de två första scripten används när API:et kontaktas.
+                
+                <h4>getleaderboard.php</h4>
+                Scriptet hämtar leaderboarden upp till topp 20 resultat. Då antalet spelare för spelet inte kommer vara speciellt högt ansågs 20 vara nog. Detta skulle bara kräva mindre modifikationer om populationen av spelare skulle öka.
+
+                <h4>updateleaderboard.php </h4>
+                Tar emot enhetsid, användarnamn, poäng och tid för att uppdatera leaderboarden. Om resultatet är nytt för enheten kommer det läggas in annars försöker scriptet uppdatera resultatet för enheten.
+                För att ett resultat ska uppdateras måste antingen poängen vara högre än tidigare alternativt att resultatet är detsamma men tiden är lägre.
+                
+                <h4>LeaderBoardRepository.php</h4>
+                Innehåller ett antal funktioner som tillåter kommunikation med databasen, detta involverar grundläggande funktion för att göra selects och updates mot databasen men också hantering av SQL-kod.
+                
+                <h2>Koppling till spelbaserat lärande</h2>
+                I det här avsnittet kommer det beskrivas hur tekniker/teorier som främjar lärande har tillämpats i spelet. Utöver det kommer relationen till ramverket Mechanics-Dynamics-Aesthetics(MDA) att diskuteras.
+                <h3>Teorier</h3>
+                De tekniker/teorier som tillämpats för att främja lärande i det här spelet är framförallt teknikerna Scaffolding, Priming. Den första handlar om att introducera saker stegvis där de varje bygger vidare på information man fått tidigare (Kapp 2012). I spelet används detta via olika spellägen där “Learning Mode” begränsar alternativen för varje fråga vilket gör det lättare att komma ihåg vilken stat en uppfinning tillhör. Där sedan “Competitive Mode” tar bort begränsningen och spelaren måste välja bland alla tillgängliga stater vilket gör uppgiften svårare. Man kan likna det vid att stödhjulen tas bort.
+                Priming handlar i kort om att man associerar olika koncept eller intryck med varann (Wikipedia 2022). Sättet detta användes i spelet var att använda kulturellt influerade ljud och färger som associeras med positivt/negativt när feedback gavs. Om spelaren klickar på fel stat spelas en negativt ljud och staten blir röd en halv sekund. Om en spelare klickar på rätt stat spelas ett positivt ljud och om det är första klicket blir staten grön, om det är andra klicket blir den gul och om det är tredje kommer den bli röd.
+                Detta blir också en form utav operant betingning där spelaren lär sig vad som är rätt och fel svar genom positiv och negativ feedback.(Kapp 2012)
+                <br><br>
+                John Kellers (2010) ARCS motivationsmodell har också använts för att utvärdera om spelet har element som går att länka mot den då motivation är viktigt de flesta aktiviteter men kanske framförallt vid lärande. Hur modellen uppfylls beskrivs nedan.
+                <br>
+                <br><b>A- Attention:</b> Spelet får spelarens uppmärksamhet genom tydlig feedback för när hen gör rätt eller fel. Både visuellt och med ljud.
+                <br><b>R- Relevance:</b> Lära sig mer om uppfinningar från USA och var uppfinningarna kommer från.
+                <br><b>C- Confidence:</b> Genom att spela spelet kommer spelaren gradvis bli bättre på att identifiera var uppfinningar kommer ifrån. 
+                <br><b>S- Satisfaction:</b> Du får högre poäng desto bättre du lyckas. Det går också att mäta sig mot andra via en leaderboard.
+                <h3>Mechanics-Dynamics-Aesthetics(MDA)</h3>
+                I detta avsnitt kommer det beskrivas hur relevanta punkter från ramverket MDA kopplas till spelet.
+                
+                <h4>Mechanics</h4>
+                <ul>
+                    <li>Points - <i>I spelet får man poäng beroende på hur många klick det tog att matcha rätt stat med uppfinning</i></li>
+                    <li>Leaderboard - <i>I “Competition Mode” registreras resultatet från spelomgången på en leaderboard</i></li>
+                    <li>Skill Tests - <i>Spelet är en form utav skill test där spelaren lär sig samtidigt som den testas</i></li>
+                </ul>
+                <h4>Dynamics</h4>
+                <ul>
+                    <li>Choices - <i>Spelaren måste välja rätt stat som uppfinningen uppfanns i</i></li>
+                    <li>Consequences - <i>Om spelaren väljer fel stat för hen mindre eller inga poäng, om spelaren väljer rätt poäng</i></li>
+                    <li>Continuation - <i>Till en början kan man förbättra sitt resultat och när man uppnått max poäng går det alltid att förbättra tiden det tog att avklara en spelomgång</i></li>
+                    <li>Competition - <i>Spelare kan mäta sitt resultat mot andra spelare via en leaderboard</i></li>
+                </ul>
+                <h4>Aesthetics</h4>
+                <ul>
+                    <li>Challenge - <i>Spelare måste komma ihåg var en uppfinning uppfanns bland ett stort antal val och desto snabbare desto bättre</i></li>
+                    <li>Confidence - <i>Spelaren lär sig vilka uppfinningar som kommer från USA och i vilken stat de uppfanns</i></li>
+                </ul>
+                <h2>Referenser</h2>
+                Karl M. Kapp. (2012). The gamification of learning and instruction. Game-Based methods and strategies for training and education.
+                <br><br>
+                Keller, J. M. (2010). The Arcs model of motivational design. In Motivational design for learning and performance (pp. 43-74). Springer, Boston, MA.
+                <br><br>
+                Priming (psychology). Hämtad: 15 Mars 2022. https://en.wikipedia.org/wiki/Priming_(psychology)
+                <br><br>
             </article>
         </section>
     </main>

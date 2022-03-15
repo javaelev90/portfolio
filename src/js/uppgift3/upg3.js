@@ -1,3 +1,4 @@
+// Skapare: Anders Lumio
 class Box {
     
     constructor(x, y, width, height, tag) {

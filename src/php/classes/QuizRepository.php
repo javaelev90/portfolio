@@ -1,5 +1,5 @@
 <?php
-    
+    // Skapare: Anders Lumio
     class QuizRepository {
 
         public function getQuizQuestionById($questionId) {

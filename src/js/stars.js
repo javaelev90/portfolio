@@ -1,3 +1,4 @@
+// Skapare: Anders Lumio
 ( function() {
     class StarMaker {
 
@@ -98,7 +99,8 @@
             this.moveStars(elapsed * 0.02);
     
             this.clear();
-    
+            
+            // Center x and y of canvas
             const cx = this.canvasWidth / 2;
             const cy = this.canvasHeight / 2;
     
@@ -106,14 +108,17 @@
             
             for (let i = 0; i < count; i++) {
                 const star = this.stars[i];
-    
+                
+                // Move stars faster when they have lower z-value, i.e. when they are closer to the screen
                 const x = cx + star.x / (star.z * 0.001);
                 const y = cy + star.y / (star.z * 0.001);
-    
+                
+                // Don't move a star if it's outside the canvas bounds
                 if (x < 0 || x >= this.canvasWidth || y < 0 || y >= this.canvasHeight) {
                     continue;
                 }
-    
+                
+                // Calculate who far the star has moved, starting at z=1000
                 const d = star.z / 1000.0;
                 // Calculating brithness depending on how close to goal/screen the star is
                 const brightness = 1 - d * d;

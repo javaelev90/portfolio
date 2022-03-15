@@ -1,3 +1,4 @@
+/* Skapare: Anders Lumio */
 #pagecontent {
     display: flex;
     flex-direction: column;
@@ -34,9 +35,9 @@
 
 .pagesectioncontent {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    width: 100%;
+    width: 80%;
 }
 
 #projectwindows {
@@ -103,4 +104,12 @@
 #introtext > h3 {
     margin-top: 5px;
     margin-block-start: 5px;
+}
+
+.centercontent {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    margin-top: 0;
 }

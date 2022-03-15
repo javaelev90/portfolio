@@ -1,4 +1,5 @@
 <?php
+    // Skapare: Anders Lumio
     require_once "LeaderBoardRepository.php";
     header('Content-Type: application/json');
 

@@ -1,3 +1,4 @@
+// Skapare: Anders Lumio
 $(window).scroll(function() {
     if ($(this).scrollTop() > 150) {
         $( "#headerbackground" ).fadeIn();

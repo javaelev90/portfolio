@@ -32,9 +32,6 @@
             <li class="pagenavigation-item">
                 <a href="index.html#resume">About</a> 
             </li>
-            <li class="pagenavigation-item">
-                <a href="index.html#contact">Contact</a> 
-            </li>
         </ul>
     </header>
 
@@ -57,6 +54,8 @@
             <article>
                 <h2>Spelbeskrivning</h2>
                 I det här spelet ska spelaren få lära sig var i USA en viss uppfinning uppfanns. För att lära sig detta ska spelaren matcha en uppfinning med en stat i USA. Spelet har två lägen, “Learning Mode” och “Competition Mode”, det första underlättar lärandet och det andra låter spelaren tävla med sitt resultat mot andra spelare. Hur väl en spelare lyckas utvärderas genom ett poängsystem kombinerat med tiden det tog att matcha alla uppfinningar. I “Competition Mode” registreras spelares bästa resultat till en leaderboard.
+                <br>
+                Målgruppen är personer som är intresserade av USAs teknikhistoria och/eller gillar tävling tycker det är kul att få ett bättre resultat.
                 <br><br>
                 <h2>Lösningen</h2>
                 Spelet utvecklades i Unity och kan övergripande delas in i tre delar, den underliggande logiken, de grafiska elementen samt leaderboard API:et. Nedan kommer dessa beskrivas.
@@ -118,7 +117,9 @@
                 I det här avsnittet kommer det beskrivas hur tekniker/teorier som främjar lärande har tillämpats i spelet. Utöver det kommer relationen till ramverket Mechanics-Dynamics-Aesthetics(MDA) att diskuteras.
                 <h3>Teorier</h3>
                 De tekniker/teorier som tillämpats för att främja lärande i det här spelet är framförallt teknikerna Scaffolding, Priming. Den första handlar om att introducera saker stegvis där de varje bygger vidare på information man fått tidigare (Kapp 2012). I spelet används detta via olika spellägen där “Learning Mode” begränsar alternativen för varje fråga vilket gör det lättare att komma ihåg vilken stat en uppfinning tillhör. Där sedan “Competitive Mode” tar bort begränsningen och spelaren måste välja bland alla tillgängliga stater vilket gör uppgiften svårare. Man kan likna det vid att stödhjulen tas bort.
-                Priming handlar i kort om att man associerar olika koncept eller intryck med varann (Wikipedia 2022). Sättet detta användes i spelet var att använda kulturellt influerade ljud och färger som associeras med positivt/negativt när feedback gavs. Om spelaren klickar på fel stat spelas en negativt ljud och staten blir röd en halv sekund. Om en spelare klickar på rätt stat spelas ett positivt ljud och om det är första klicket blir staten grön, om det är andra klicket blir den gul och om det är tredje kommer den bli röd.
+                Att ha två spellägen är också bra ur ett motivationsperspektiv. Self determination theory som förklarar vad som skapar motivation involverar bland annat kompetens, för att uppfylla detta är det viktigt att spelaren känner att hen blir bättre men också att den inte känner sig överväldigad av för mycket information (urmc.rochester 2022). Det sista är vad två spellägen underlättar, så att spelaren känner att hen blir bättre men inte blir överväldigad.
+                <br><br>
+                Priming handlar i kort om att man associerar olika koncept eller intryck med varann (Wikipedia 2022). Sättet detta användes i spelet var att använda kulturellt influerade ljud och färger som associeras med positivt/negativt när feedback gavs. Om spelaren klickar på fel stat spelas en negativt ljud och staten blir röd en halv sekund. Om en spelare klickar på rätt stat spelas ett positivt ljud och om det är första klicket blir staten grön, om det är andra klicket blir den gul och om det är tredje kommer den bli röd. Detta hjälper förhoppningsvis spelaren att koppla rätt stat till uppfinning.
                 Detta blir också en form utav operant betingning där spelaren lär sig vad som är rätt och fel svar genom positiv och negativ feedback.(Kapp 2012)
                 <br><br>
                 John Kellers (2010) ARCS motivationsmodell har också använts för att utvärdera om spelet har element som går att länka mot den då motivation är viktigt de flesta aktiviteter men kanske framförallt vid lärande. Hur modellen uppfylls beskrivs nedan.
@@ -149,12 +150,19 @@
                     <li>Confidence - <i>Spelaren lär sig vilka uppfinningar som kommer från USA och i vilken stat de uppfanns</i></li>
                 </ul>
                 <br>
+                <h2>Reflektioner</h2>
+                Till nästa prototyp av spelet skulle jag vilja göra kopplingen mellan stat och uppfinning tydligare. Just nu tycker jag att övergången till en ny fråga sker lite för snabbt och det känns nästan som att man kan missa till vilken stat en uppfinning tillhör. En möjlig lösning på detta skulle vara skapa en stor animation där statens namn och uppfinningen visas upp på skärmen när man klickar på rätt stat. Efter att den animationen slutförts skulle nästa fråga presenteras. 
+                <br>
+                Det hade också varit intressant att kunna se vilken uppfinning som hör till en stat i efterhand. Jag hade kunnat lösa detta genom att visa namn på stat och uppfinning när man håller musen över en stat, efter att man har svarat på frågan som hör till staten.
+                <br>
                 <h2>Referenser</h2>
                 Karl M. Kapp. (2012). The gamification of learning and instruction. Game-Based methods and strategies for training and education.
                 <br><br>
                 Keller, J. M. (2010). The Arcs model of motivational design. In Motivational design for learning and performance (pp. 43-74). Springer, Boston, MA.
                 <br><br>
-                Priming (psychology). Hämtad: 15 Mars 2022. https://en.wikipedia.org/wiki/Priming_(psychology)
+                Priming (psychology). https://en.wikipedia.org/wiki/Priming_(psychology) (Hämtad 2022-03-15)
+                <br><br>
+                University of Rochester Medical Center. 2022. Self-Determination Theory. https://www.urmc.rochester.edu/community-health/patient-care/self-determination-theory.aspx (Hämtad 2022-03-16)
                 <br><br>
             </article>
         </section>
